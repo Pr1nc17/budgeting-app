@@ -1,12 +1,35 @@
 # Backend
+Backend is now Python using a virtual environment
 
-## Installing Dependencies
-CD into the backend folder
-Run `npm install`
+## Setup
+To set up the environment open the terminal in the backend and use command `python -m venv .`
 
-## Running The App
+This command will Generate the following Folders:
+* Include
+* Lib
+* Scripts
 
-### Running it in Dev
-`npm run dev `
-### Running it in Prod
-`npm run start` or `npm start`
+it will also add a `pyvenv.cfg` file
+
+Install dependencies using `pip install -r ./requirements.txt`
+
+## Activate the VENV
+To activate the virtual environment input the following commands
+
+`cd Scripts` - `activate.bat`
+
+This will activate the venv
+
+## Deactivate the VENV
+To activate the virtual environment input the following commands
+
+`cd Scripts` - `deactivate.bat`
+
+This will activate the venv
+
+## Running
+Running the app is currently done running `py main.py` in the terminal
+
+
+## Additional Dependencies
+Please add all required dependencies in the `requirements.txt`
