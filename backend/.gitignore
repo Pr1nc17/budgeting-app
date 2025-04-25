@@ -1,3 +1,10 @@
-package-lock.json
-node_modules
+/Include
+/Include/*
+/Lib
+/Lib/*
+/Scripts
+/Scripts*
+pyvenv.cfg
 .env
+.vscode
+.vscode/*
