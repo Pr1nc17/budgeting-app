@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginForm({ onLogin }) {
   const {
@@ -7,6 +8,8 @@ export default function LoginForm({ onLogin }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { user } = useAuth();
 
   const onSubmit = (data) => {
     onLogin(data);
@@ -22,6 +25,7 @@ export default function LoginForm({ onLogin }) {
       <div className="mb-4">
         <label className="block text-sm font-medium">Email/Username</label>
         <input
+          value={user?.email || user?.name || ""}
           type="text"
           {...register("email", { required: "Email is required" })}
           className="w-full mt-1 p-2 border rounded"
@@ -34,6 +38,7 @@ export default function LoginForm({ onLogin }) {
       <div className="mb-6">
         <label className="block text-sm font-medium">Password</label>
         <input
+          value={user?.password || ""}
           type="password"
           {...register("password", { required: "Password is required" })}
           className="w-full mt-1 p-2 border rounded"

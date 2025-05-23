@@ -1,9 +1,14 @@
 import { createContext, useState, useContext } from "react";
 
 const AuthContext = createContext();
+const initialUser = {
+  name: "Demo User",
+  email: "test@gmail.com",
+  password: "123567",
+};
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(initialUser);
 
   const login = ({ email, password }) => {
     // Simulate login (replace with real API call)
