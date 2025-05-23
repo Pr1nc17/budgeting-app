@@ -12,6 +12,6 @@ function App() {
 
   return (//
     isLoggedIn ? <div><Dashboard/></div> : <div><LoginForm /></div>
-}
+)}
 
 export default App

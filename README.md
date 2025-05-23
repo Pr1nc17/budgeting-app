@@ -1,2 +1,2 @@
-# budgeting-app
-An app that calculates expenses in a smart manner. This app is targeted towards individuals between the age of 18-25.
+# DO FRONTEND STUFF IN THIS FOLDER
+## No , we have decided to use a folder called 'banana' inside the 'backend' folder , warm regards.
