@@ -1,6 +1,6 @@
 # Budgeting App
 
-![App Logo](./my-react-app/src/assets/logo.jpeg) <!-- Update the path based on  logo is stored -->
+![App Logo](frontend/my-react-app/src/assets/logo.jpeg) <!-- Update the path based on  logo is stored -->
 
 A modern, intuitive budgeting app built with **React** to help users manage their finances effectively.
 
