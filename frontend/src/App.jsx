@@ -8,7 +8,7 @@ import Dashboard from './components/Dashboard';
 
 function App() {
   const [count, setCount] = useState(0)
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //set true to see dashboard , otherwise login form
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //set true to see dashboard , otherwise login form
 
   return (//
     isLoggedIn ? <div><Dashboard/></div> : <div><LoginForm /></div>
