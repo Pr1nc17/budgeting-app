@@ -1,88 +1,70 @@
-import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
+export default function LoginForm({ onLogin }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { user } = useAuth();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    //login logic
-    console.log('Logging in with:', email, password);
+  const onSubmit = (data) => {
+    onLogin(data);
   };
 
-  
-  //we could have it render a found user icon after email is entered
-  //or a logo if no email is entered
-  const iconText = email.trim() ? 'User Icon' : 'App Logo';
-
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        padding: '20px',
-      }}
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="bg-white p-8 rounded shadow-md w-96"
     >
-      <div style={{ fontSize: '64px', marginBottom: '20px' }}>
-        {iconText}
-      </div>
-      <form
-        onSubmit={handleLogin}
-        style={{ display: 'flex', flexDirection: 'column', width: '300px' }}
-      >
-        <input
-          type="email"
-          value={email}
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          style={{
-            padding: '10px',
-            marginBottom: '10px',
-            fontSize: '16px',
-            borderRadius: '4px',
-            border: '1px solid #ccc',
-          }}
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          style={{
-            padding: '10px',
-            marginBottom: '10px',
-            fontSize: '16px',
-            borderRadius: '4px',
-            border: '1px solid #ccc',
-          }}
-          required
-        />
-        <button
-          type="submit"
-          style={{
-            padding: '10px',
-            fontSize: '16px',
-            borderRadius: '4px',
-            border: 'none',
-            backgroundColor: '#007BFF',
-            color: '#fff',
-            cursor: 'pointer',
-            marginBottom: '10px',
-          }}
-        >
-          Login
-        </button>
-      </form>
-      <a href="/register" style={{ color: '#007BFF', textDecoration: 'none' }}>
-        no account? Create one!
-      </a>
-    </div>
-  );
-};
+      <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
 
-export default LoginForm;
+      <div className="mb-4">
+        <label className="block text-sm font-medium">Email/Username</label>
+        <input
+          value={user?.email || user?.name || ""}
+          type="text"
+          {...register("email", { required: "Email is required" })}
+          className="w-full mt-1 p-2 border rounded"
+        />
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+        )}
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-sm font-medium">Password</label>
+        <input
+          value={user?.password || ""}
+          type="password"
+          {...register("password", { required: "Password is required" })}
+          className="w-full mt-1 p-2 border rounded"
+        />
+        {errors.password && (
+          <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+        )}
+      </div>
+
+      <button
+        type="submit"
+        className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+      >
+        Login
+      </button>
+      <p className="mt-4 text-center text-sm">
+        Don't have an account?{" "}
+        <Link to="/signup" className="text-blue-600 hover:underline">
+          Sign up
+        </Link>
+      </p>
+      <p className="mt-4 text-center text-sm">
+        <Link to="/Dashboard" className="text-blue-600 hover:underline">
+          Skip to demo
+        </Link>
+      </p>
+    </form>
+  );
+}

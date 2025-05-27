@@ -1,12 +1,30 @@
-# React + Vite
+# Budgeting App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![App Logo](./my-react-app/src/assets/logo.jpeg) <!-- Update the path based on  logo is stored -->
 
-Currently, two official plugins are available:
+A modern, intuitive budgeting app built with **React** to help users manage their finances effectively.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🧾 Track income and expenses
+- 📊 Visualize spending with charts
+- 💰 Set and monitor budgets
+- 🔒 Secure local storage
+- ⚡ Responsive and mobile-friendly UI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- **React** (with Hooks)
+- **Tailwind CSS** (for styling)
+- **Chart.js / Recharts** (for data visualization)
+- **React Router** (for navigation)
+- **Context API / Redux** (for state management)
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/Pr1nc17/budgeting-app.git
+cd budgeting-app\frontend\my-react-app
+npm install
+npm run dev
+```
