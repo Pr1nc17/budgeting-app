@@ -22,7 +22,7 @@ export default function AppRoutes() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/dashboard" />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
