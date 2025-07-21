@@ -1,0 +1,33 @@
+[
+  {
+    "Name": "Both",
+    "Projects": [
+      {
+        "Path": "backend\\backend.pyproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "frontend\\frontend.esproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "Backend Only",
+    "Projects": [
+      {
+        "Path": "backend\\backend.pyproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "Frontend Only",
+    "Projects": [
+      {
+        "Path": "frontend\\frontend.esproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
