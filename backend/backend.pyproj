@@ -24,6 +24,9 @@
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\routes\" />
+    <Folder Include="db\" />
+    <Folder Include="Models\" />
+    <Folder Include="_static\" />
     <Folder Include="share\" />
     <Folder Include="share\man\" />
     <Folder Include="share\man\man1\" />
@@ -33,6 +36,9 @@
     <Compile Include="app\routes\AppRoutes.py" />
     <Compile Include="app\routes\AuthRoutes.py" />
     <Compile Include="app\__init__.py" />
+    <Compile Include="db\Auth.py" />
+    <Compile Include="db\__init__.py" />
+    <Compile Include="Models\SignUpModel.py" />
     <Compile Include="main.py" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +48,7 @@
     <Content Include="requirements.txt" />
     <Content Include="share\man\man1\ttx.1" />
     <Content Include="static\Test.html" />
+    <Content Include="_static\DBInit.sql" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="backend-env\">
