@@ -1,2 +1,4 @@
-# DO FRONTEND STUFF IN THIS FOLDER
-## No , we have decided to use a folder called 'banana' inside the 'backend' folder , warm regards.
+# Budgeting App
+
+
+i didnt see a readme so am adding new one
