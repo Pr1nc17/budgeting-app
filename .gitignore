@@ -1,2 +1,9 @@
+#VS Code ignores
+
 .vscode
 .vscode/*
+
+
+# VS ignores
+.vs
+.vs/*
