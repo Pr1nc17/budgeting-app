@@ -1,12 +1,17 @@
 # Pyhton specific gitignore
-
 Include
 Lib
 Scripts
 .env
 pyvenv.cfg
 
+# This is env specific pls try name you venv as backend-env
+backend-env/share/man/man1
+
+# Pycache Ignores IMPORTANT
+
 app/__pycache__
 app/routes/__pycache__
 
-backend-env/share/man/man1
+/db/__pycache__
+/models/__pycache__

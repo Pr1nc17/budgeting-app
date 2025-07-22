@@ -33,3 +33,7 @@ Running the app is currently done running `py main.py` in the terminal
 
 ## Additional Dependencies
 Please add all required dependencies in the `requirements.txt`
+
+
+## NB!!!
+Please remember any additional files added need to have their \_\_pycache\_\_ ignored in the `.gitignore` before commiting
