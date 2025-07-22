@@ -6,8 +6,8 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (data) => {
-    login(data); // Or await login(data) if async
+  const handleLogin = async (data) => {
+    await login(data);
     navigate("/dashboard");
   };
 

@@ -27,9 +27,13 @@ def add_new_user(signUpDTO: SignUpModel) -> str | None:
             )
         )
         conn.commit()
-        return None
+    
+        user_id = cursor_obj.lastrowid
+        return user_id
+
     except Exception as e:
         return f"Error adding new user: {e}"
+
     finally:
         cursor_obj.close()
         conn.close()
@@ -51,7 +55,7 @@ def sign_user_in(email: str, password: str) -> str | None:
         if not bcrypt.checkpw(password.encode('utf-8'), stored_hashed.encode('utf-8')):
             return "Invalid email or password"
 
-        return None
+        return user["ID"]
     except Exception as e:
         return f"Error signing in user: {e}"
     finally:

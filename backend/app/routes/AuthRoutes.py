@@ -5,15 +5,15 @@ from db.Auth import sign_user_in, add_new_user
 import base64
 
 def init_auth_routes():
-    app_route = Blueprint("AuthRoute", __name__)
+    auth_route = Blueprint("AuthRoute", __name__)
 
-    @app_route.route("/login", methods=['GET'])
+    @auth_route.route("/login", methods=['GET'])
     def login():
         login_details = request.headers.get("auth")
         
         if not login_details:
             print("Missing auth header")
-            return "Login Failed", 400
+            return { "Message": "Login Failed"}, 400
 
         try:
             b64_email, b64_password = login_details.split(":")
@@ -22,16 +22,16 @@ def init_auth_routes():
 
             signInCheck = sign_user_in(email, password)
             
-            if signInCheck is None:
-                return "Login Success", 200
+            if isinstance(signInCheck, int):
+                return {"Message": "Login Success", "userId": signInCheck}, 200
             else:
-                return signInCheck, 400
+                return { "Message": "Login Failed"}, 400
 
         except Exception as e:
             print("Invalid Login Auth Header:", e)
-            return "Login Failed", 400
+            return { "Message": "Login Failed"}, 400
 
-    @app_route.route("/sign-up", methods=['POST'])
+    @auth_route.route("/sign-up", methods=['POST'])
     def sign_up():
         data = request.get_json()
 
@@ -52,4 +52,4 @@ def init_auth_routes():
         else:
             return add_user_result, 400
 
-    return app_route
+    return auth_route
