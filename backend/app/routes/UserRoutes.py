@@ -17,8 +17,8 @@ def init_user_routes():
 
         name, email = user_details
         response = {
-            "Name": name,
-            "Email": email
+            "name": name,
+            "nmail": email
         }
         return response, 200
 

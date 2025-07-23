@@ -3,7 +3,7 @@ export class ApiController {
         this.baseURL = baseURL;
     }
 
-    async ConnectToGetApi(endpoint, headers) {
+    async ConnectToGetApi(endpoint, headers = {}) {
         const url = `${this.baseURL}${endpoint}`;
         try {
             const response = await fetch(url,

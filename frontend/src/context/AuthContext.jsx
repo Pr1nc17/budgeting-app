@@ -28,14 +28,47 @@ export const AuthProvider = ({ children }) => {
 
         setUser({
             email: userDetails.email,
-            userId: response.userID,
+            name: userDetails.name,
         });
 
         console.log(user);
     };
 
-    const registerUser = ({ name, email }) => {
-        setUser({ name, email });
+    const registerUser = async ({ first_name, last_name, email, DoB, password}) => {
+        const api = new ApiController()
+
+        console.log('here 1')
+
+        const registerHeaders = { "Content-Type": "application/json" }
+
+        const body = {
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
+            password: password,
+            DoB: DoB,
+        }
+
+        console.log("body", body)
+
+        const [register_code, response] = await api.ConnectToPostApi("/auth/register", registerHeaders, body);
+
+        if (register_code !== 201) {
+            console.error("Registration failed", response);
+            return;
+        }
+        console.log('here 2')
+
+        const [userStatusCode, userDetails] = await api.ConnectToGetApi(`/user/basic-details?userId=${response.userId}`, {});
+        if (userStatusCode !== 200) {
+            console.error("Failed to fetch user details", userDetails);
+            return;
+        }
+
+        setUser({
+            email: userDetails.email,
+            name: userDetails.name,
+        });
     };
 
     const logout = () => setUser(null);

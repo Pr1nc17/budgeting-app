@@ -31,8 +31,8 @@ def init_auth_routes():
             print("Invalid Login Auth Header:", e)
             return { "Message": "Login Failed"}, 400
 
-    @auth_route.route("/sign-up", methods=['POST'])
-    def sign_up():
+    @auth_route.route("/register", methods=['POST'])
+    def register():
         data = request.get_json()
 
         if not data or not all(key in data for key in ("first_name", "last_name", "email", "password", "DoB")):
@@ -47,8 +47,8 @@ def init_auth_routes():
         signUpModel = SignUpModel(**data)
         add_user_result = add_new_user(signUpModel)
 
-        if add_user_result is None:
-            return "User created successfully", 201
+        if isinstance(add_user_result, int):
+            return { "Message": "User created successfully", "userId": add_user_result }, 201
         else:
             return add_user_result, 400
 
