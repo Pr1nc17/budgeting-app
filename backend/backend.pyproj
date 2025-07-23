@@ -35,8 +35,10 @@
   <ItemGroup>
     <Compile Include="app\routes\AppRoutes.py" />
     <Compile Include="app\routes\AuthRoutes.py" />
+    <Compile Include="app\routes\UserRoutes.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="db\Auth.py" />
+    <Compile Include="db\User.py" />
     <Compile Include="db\__init__.py" />
     <Compile Include="Models\SignUpModel.py" />
     <Compile Include="main.py" />
