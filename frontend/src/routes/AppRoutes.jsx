@@ -5,26 +5,26 @@ import Dashboard from "../pages/Dashboard";
 import SignUp from "../pages/SignUp";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/login" />;
+    const { user } = useAuth();
+    return user ? children : <Navigate to="/login" />;
 };
 
 export default function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="*" element={<Navigate to="/dashboard" />} /> {/* Redirect all unknown routes to dashboard  => why????*/}
+                <Route path="/signup" element={<SignUp />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
