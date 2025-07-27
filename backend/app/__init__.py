@@ -3,6 +3,7 @@ from flask import Flask
 # Blueprint Imports
 from .routes import AppRoutes
 from .routes import AuthRoutes
+from .routes import UserRoutes
 
 def get_url_prefix(routeHandler: str):
     return f'/api/{routeHandler}'
@@ -17,5 +18,6 @@ def init_app(dev_env: bool):
 
     app.register_blueprint(AppRoutes.init_app_routes())
     app.register_blueprint(AuthRoutes.init_auth_routes(), url_prefix=get_url_prefix('auth'))
+    app.register_blueprint(UserRoutes.init_user_routes(), url_prefix=get_url_prefix('user'))
 
     return app

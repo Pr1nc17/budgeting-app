@@ -23,9 +23,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\businesslayer\" />
     <Folder Include="app\routes\" />
-    <Folder Include="db\" />
+    <Folder Include="app\datalayer\" />
     <Folder Include="Models\" />
+    <Folder Include="Models\Auth\" />
     <Folder Include="_static\" />
     <Folder Include="share\" />
     <Folder Include="share\man\" />
@@ -33,13 +35,20 @@
     <Folder Include="static\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="app\businesslayer\Auth.py" />
+    <Compile Include="app\businesslayer\User.py" />
+    <Compile Include="app\businesslayer\__init__.py" />
     <Compile Include="app\routes\AppRoutes.py" />
     <Compile Include="app\routes\AuthRoutes.py" />
+    <Compile Include="app\routes\UserRoutes.py" />
     <Compile Include="app\__init__.py" />
-    <Compile Include="db\Auth.py" />
-    <Compile Include="db\__init__.py" />
-    <Compile Include="Models\SignUpModel.py" />
+    <Compile Include="app\datalayer\Auth.py" />
+    <Compile Include="app\datalayer\User.py" />
+    <Compile Include="app\datalayer\__init__.py" />
+    <Compile Include="Models\Auth\LoginResult.py" />
+    <Compile Include="Models\Auth\RegisterRequest.py" />
     <Compile Include="main.py" />
+    <Compile Include="Models\Auth\RegisterResponse.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env" />
