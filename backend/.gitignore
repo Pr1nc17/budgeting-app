@@ -13,5 +13,7 @@ backend-env/share/man/man1
 app/__pycache__
 app/routes/__pycache__
 
-/db/__pycache__
+app/datalayer/__pycache__
+app/businesslayer/__pycache__
+/models/Auth/__pycache__
 /models/__pycache__

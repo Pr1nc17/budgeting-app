@@ -12,7 +12,6 @@ export default function SignUp() {
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        console.log("New User Data:", data);
         await registerUser(data); // Auto-login after sign-up
         // Are we sure this is the logic we want to implement?
         // If it is then vibes, but we need to consider security,

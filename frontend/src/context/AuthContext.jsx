@@ -16,13 +16,14 @@ export const AuthProvider = ({ children }) => {
 
         const [statusCode, response] = await api.ConnectToGetApi("/auth/login", headers);
         if (statusCode !== 200) {
-            console.error("Login failed", response);
             return;
         }
 
-        const [userStatusCode, userDetails] = await api.ConnectToGetApi(`/user/basic-details?userId=${response.userId}`, headers);
+        const token = {
+            'Authorization': `bearer ${response.token}`
+        }
+        const [userStatusCode, userDetails] = await api.ConnectToGetApi(`/user/basic-details?userId=${response.userId}`, token);
         if (userStatusCode !== 200) {
-            console.error("Failed to fetch user details", userDetails);
             return;
         }
 
@@ -30,14 +31,10 @@ export const AuthProvider = ({ children }) => {
             email: userDetails.email,
             name: userDetails.name,
         });
-
-        console.log(user);
     };
 
     const registerUser = async ({ first_name, last_name, email, DoB, password}) => {
         const api = new ApiController()
-
-        console.log('here 1')
 
         const registerHeaders = { "Content-Type": "application/json" }
 
@@ -49,19 +46,26 @@ export const AuthProvider = ({ children }) => {
             DoB: DoB,
         }
 
-        console.log("body", body)
-
         const [register_code, response] = await api.ConnectToPostApi("/auth/register", registerHeaders, body);
 
         if (register_code !== 201) {
-            console.error("Registration failed", response);
             return;
         }
-        console.log('here 2')
 
-        const [userStatusCode, userDetails] = await api.ConnectToGetApi(`/user/basic-details?userId=${response.userId}`, {});
+        const authHeader = `${btoa(email)}:${btoa(password)}`;
+        const loginHeaders = {
+            'auth': authHeader
+        }
+        const [statusCode, loginResponse] = await api.ConnectToGetApi("/auth/login", loginHeaders);
+        if (statusCode !== 200) {
+            return;
+        }
+
+        const getDetailsHeaders = {
+            'Authorization': `bearer ${loginResponse.token}`
+        }
+        const [userStatusCode, userDetails] = await api.ConnectToGetApi(`/user/basic-details?userId=${loginResponse.userId}`, getDetailsHeaders);
         if (userStatusCode !== 200) {
-            console.error("Failed to fetch user details", userDetails);
             return;
         }
 

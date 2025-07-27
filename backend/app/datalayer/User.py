@@ -1,10 +1,9 @@
-from db import create_sql_connection
+from app.datalayer import create_sql_connection
 
 def get_user_details(userId: int):
     conn = create_sql_connection()
     cursor_obj = conn.cursor(dictionary=True)
 
-    
     try:
         cursor_obj.execute('Select FirstName, LastName, Email FROM Users where ID = %s', (userId, ))
 
